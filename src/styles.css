@@ -1,0 +1,47 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+/* h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+} */
+img {
+  display: block;
+  min-width: 50%;
+  height: auto;
+}
+input {
+  width: 250px;
+  height: 50px;
+  text-align: left;
+}
+.countryContainer {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+}
+.js-countryItem {
+  display: inline;
+  border: 1px solid grey;
+  padding: 10px;
+  margin: 10px;
+  width: 350px;
+  height: 500px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.js-countryItem:hover,
+.js-countryItem:focus {
+  box-shadow: 5px 5px 15px 5px #000000;
+}
