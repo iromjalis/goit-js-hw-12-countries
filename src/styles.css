@@ -6,15 +6,7 @@ body{
 *::before,
 *::after {
   box-sizing: inherit;
-
 }
-/* h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-  padding: 0;
-} */
 
 img {
   display: inline-flex;
@@ -23,8 +15,12 @@ img {
   margin: 10px;
   border: 1px solid black;
 }
+ul{
+  padding: 15px;
+}
 li{
-  width: 100%;
+  list-style-type:square;
+  text-align-last: left;
 }
 
 input {
@@ -36,7 +32,7 @@ input {
 
 .countryContainer {
   margin: 0;
-  display: flex;
+  display: inlain-flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
@@ -44,17 +40,25 @@ input {
 .js-countryItem {
   display: inline-flex;
   justify-content: center;
+}
+.country-item{
+  text-align: center;
   border: 1px solid grey;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   overflow: hidden;
+  max-width: 500px;
 }
-.js-countryItem:hover,
-.js-countryItem:focus {
+.country-item:hover,
+.country-item:focus {
   box-shadow: 5px 5px 15px 5px #000000;
 }
 
 .country-info{
   width: 50%;
+}
+.country-name{
+  margin-left: 200px;
+  margin-right: 200px;
 }
