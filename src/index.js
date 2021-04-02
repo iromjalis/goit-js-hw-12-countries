@@ -7,14 +7,14 @@ const refs= {
   countryContainer : document.querySelector('.countryContainer')
   }
   
-refs.searchFrom.addEventListener('change', (e) => {
+refs.searchFrom.addEventListener('input', (e) => {
  e.preventDefault()
 
  refs.countryContainer.innerHTML = ''
 
  const inputValue = e.currentTarget.value;
- 
-fetchCountry (inputValue).then(data=> updateMarkup(data))
+ if(inputValue !== ' ' || inputValue.value.length >= 2){
+fetchCountry (inputValue).then(data=> updateMarkup(data))}
 })
 
 //~запрос
