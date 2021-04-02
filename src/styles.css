@@ -15,19 +15,26 @@ h4 {
   margin: 0;
   padding: 0;
 } */
+
 img {
   display: block;
   min-width: 50%;
   height: auto;
 }
+li{
+  width: 100%;
+}
+
 input {
+  display: block;
   width: 250px;
   height: 50px;
   text-align: left;
 }
+
 .countryContainer {
   margin: 0;
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   justify-content: left;
   align-items: center;
