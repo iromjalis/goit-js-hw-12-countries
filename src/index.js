@@ -1,18 +1,19 @@
 import './styles.css';
-
-import templates from './template/template.hbs'
+import templates from './template/template.hbs';
+import {debounce} from 'throttle-debounce';
 
 const refs= {
   searchFrom: document.querySelector('.input'),
   countryContainer : document.querySelector('.countryContainer')
   }
   
-refs.searchFrom.addEventListener('input', (e) => {
+refs.searchFrom.addEventListener('change', (e) => {
  e.preventDefault()
 
  refs.countryContainer.innerHTML = ''
 
  const inputValue = e.currentTarget.value;
+ 
 fetchCountry (inputValue).then(data=> updateMarkup(data))
 })
 
@@ -29,3 +30,4 @@ function updateMarkup (data){
   if(data!== ''&& data!== null){
   refs.countryContainer.insertAdjacentHTML('afterbegin', markup)}
 }
+
