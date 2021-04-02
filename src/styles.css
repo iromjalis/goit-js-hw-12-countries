@@ -17,9 +17,11 @@ h4 {
 } */
 
 img {
-  display: block;
+  display: inline-flex;
   min-width: 50%;
   height: auto;
+  margin: 10px;
+  border: 1px solid black;
 }
 li{
   width: 100%;
@@ -34,18 +36,17 @@ input {
 
 .countryContainer {
   margin: 0;
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
-  justify-content: left;
+  justify-content: space-around;
   align-items: center;
 }
 .js-countryItem {
-  display: inline;
+  display: inline-flex;
+  justify-content: center;
   border: 1px solid grey;
   padding: 10px;
   margin: 10px;
-  width: 350px;
-  height: 500px;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -54,3 +55,6 @@ input {
   box-shadow: 5px 5px 15px 5px #000000;
 }
 
+.country-info{
+  width: 50%;
+}

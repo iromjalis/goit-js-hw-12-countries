@@ -47,10 +47,10 @@ function fetchCountry (inputValue){
 //~отриcовка карточек на странице
 function updateMarkup (data){
   const markup = templates(data)
-  console.log(data.length);
+
   if(data.length === undefined){
     error({
-      text: ` Please enter a more specific query!`,
+      text: `Please enter a more specific query!`,
       styling:'brighttheme',
       delay: 1000,
     });
@@ -68,7 +68,7 @@ function updateMarkup (data){
     return data.forEach(country=>refs.countryContainer.innerHTML += `<li>${country.name}</li>`);
   }
 
-  if(data!== '' && data !== null && data !== undefined){
+  if(data.length === 1){
   refs.countryContainer.insertAdjacentHTML('afterbegin', markup)}
 }
 
