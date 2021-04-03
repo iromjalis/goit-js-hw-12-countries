@@ -9,7 +9,7 @@ import "@pnotify/desktop/dist/PNotifyDesktop" ;
 import '@pnotify/core/dist/BrightTheme.css';
 
 
-defaultModules.set(PNotifyDesktop, {});
+// defaultModules.set(PNotifyDesktop, {});
 // error({
 //   text: 'Too many matches found. Please enter a more specific query!',
 //   styling:'brighttheme',
@@ -34,6 +34,15 @@ fetchCountry (inputValue).then(data=> updateMarkup(data))}
 })
 
 //~запрос
+
+function debounce(fetchCountry, timeout = 500){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fetchCountry, timeout);
+  };
+}
+
 function fetchCountry (inputValue){
 return fetch(`https://restcountries.eu/rest/v2/name/${inputValue}`)
 .then(data=>data.json())
@@ -48,7 +57,7 @@ return fetch(`https://restcountries.eu/rest/v2/name/${inputValue}`)
 function updateMarkup (data){
   const markup = templates(data)
 
-  if(data.length === 'undefined' || data === 'undefined'){
+  if(data.length === 0 || data.length === 'undefined'){
     error({
       text: `Please enter a more specific query!`,
       styling:'brighttheme',
