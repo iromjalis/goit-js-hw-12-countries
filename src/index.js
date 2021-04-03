@@ -35,7 +35,7 @@ fetchCountry (inputValue).then(data=> updateMarkup(data))}
 
 //~запрос
 function fetchCountry (inputValue){
-  return fetch(`https://restcountries.eu/rest/v2/name/${inputValue}`)
+return fetch(`https://restcountries.eu/rest/v2/name/${inputValue}`)
 .then(data=>data.json())
 .catch(text=> { error({
      text: 'Too many matches found. Please enter a more specific query!',
@@ -48,11 +48,11 @@ function fetchCountry (inputValue){
 function updateMarkup (data){
   const markup = templates(data)
 
-  if(data.length === undefined){
+  if(data.length === 'undefined' || data === 'undefined'){
     error({
       text: `Please enter a more specific query!`,
       styling:'brighttheme',
-      delay: 1000,
+      delay: 500,
     });
     return
   }
@@ -62,7 +62,7 @@ function updateMarkup (data){
       title: `Too many matches found.`,
       text: `We found ${data.length} countries. Please enter a more specific query!`,
       styling:'brighttheme',
-      delay: 1000,
+      delay: 500,
 
     });
     return data.forEach(country=>refs.countryContainer.innerHTML += `<li>${country.name}</li>`);
