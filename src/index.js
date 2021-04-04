@@ -1,5 +1,6 @@
 import './styles.css';
 
+import fetchCountries from './js/fetchCountries.js'
 import templates from './template/template.hbs'
 import {  defaultModules,error} from '@pnotify/core';
 import * as PNotifyDesktop from '@pnotify/desktop/dist/PNotifyDesktop';
@@ -8,30 +9,24 @@ import "@pnotify/core/dist/PNotify.css"
 import "@pnotify/desktop/dist/PNotifyDesktop" ;
 import '@pnotify/core/dist/BrightTheme.css';
 
-
-// defaultModules.set(PNotifyDesktop, {});
-// error({
-//   text: 'Too many matches found. Please enter a more specific query!',
-//   styling:'brighttheme',
-
-// });
-
-
-//&=================
+//&===== REFS ============
 const refs= {
   searchFrom: document.querySelector('.input'),
   countryContainer : document.querySelector('.countryContainer')
   }
   
-refs.searchFrom.addEventListener('input', (e) => {
- e.preventDefault()
+
+refs.searchFrom.addEventListener('input', debounce(onInputChange,500))
+
+const onInputChange = (e) => {
+  e.preventDefault()
 
  refs.countryContainer.innerHTML = ''
 
  const inputValue = e.currentTarget.value;
  if(inputValue !== ' ' || inputValue.value.length >= 2){
 fetchCountry (inputValue).then(data=> updateMarkup(data))}
-})
+}
 
 //~запрос
 
@@ -80,4 +75,3 @@ function updateMarkup (data){
   if(data.length === 1){
   refs.countryContainer.insertAdjacentHTML('afterbegin', markup)}
 }
-
