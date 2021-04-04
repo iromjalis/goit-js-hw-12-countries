@@ -12,7 +12,7 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 //&===== REFS ============
 const refs= {
-  searchFrom: document.querySelector('.input'),
+  searchForm: document.querySelector('input'),
   countryContainer : document.querySelector('.countryContainer')
   }
   
@@ -30,8 +30,8 @@ const onInputChange = (e) => {
 fetchCountry (inputValue).then(data=> updateMarkup(data))}
 }
 
-// refs.searchFrom.addEventListener('input', debounce(onInputChange,1000))
-refs.searchFrom.addEventListener('input', onInputChange)
+refs.searchForm.addEventListener('input', debounce(onInputChange, 1000))
+// refs.searchForm.addEventListener('input', onInputChange)
 
 //~запрос
 
