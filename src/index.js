@@ -1,5 +1,6 @@
 import './styles.css';
 
+import { debounce } from "debounce";
 import fetchCountries from './js/fetchCountries.js'
 import templates from './template/template.hbs'
 import {  defaultModules,error} from '@pnotify/core';
@@ -16,29 +17,31 @@ const refs= {
   }
   
 
-
 const onInputChange = (e) => {
   e.preventDefault()
 
  refs.countryContainer.innerHTML = ''
 
  const inputValue = e.currentTarget.value;
+ console.log(e.currentTarget);
  console.log(inputValue);
+
  if(inputValue !== ' ' || inputValue.value.length >= 2){
 fetchCountry (inputValue).then(data=> updateMarkup(data))}
 }
 
-refs.searchFrom.addEventListener('input', debounce(onInputChange,1000))
+// refs.searchFrom.addEventListener('input', debounce(onInputChange,1000))
+refs.searchFrom.addEventListener('input', onInputChange)
 
 //~запрос
 
-function debounce(fetchCountry, timeout = 500){
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => fetchCountry, timeout);
-  };
-}
+// function debounce(fetchCountry, timeout = 500){
+//   let timer;
+//   return (...args) => {
+//     clearTimeout(timer);
+//     timer = setTimeout(() => fetchCountry, timeout);
+//   };
+// }
 
 function fetchCountry (inputValue){
 return fetch(`https://restcountries.eu/rest/v2/name/${inputValue}`)
