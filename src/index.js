@@ -16,7 +16,6 @@ const refs= {
   }
   
 
-refs.searchFrom.addEventListener('input', debounce(onInputChange,500))
 
 const onInputChange = (e) => {
   e.preventDefault()
@@ -24,9 +23,12 @@ const onInputChange = (e) => {
  refs.countryContainer.innerHTML = ''
 
  const inputValue = e.currentTarget.value;
+ console.log(inputValue);
  if(inputValue !== ' ' || inputValue.value.length >= 2){
 fetchCountry (inputValue).then(data=> updateMarkup(data))}
 }
+
+refs.searchFrom.addEventListener('input', debounce(onInputChange,1000))
 
 //~запрос
 
