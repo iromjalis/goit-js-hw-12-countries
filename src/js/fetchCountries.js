@@ -3,7 +3,7 @@ const fetchCountries = (searchQuery) => {
     let url = `${DATA_URL}${searchQuery}`
      return fetch(url)
      .then(res => res.json())
-     .catch(error => console.log(error))
+     .catch(error => console.log('error'))
   }
   
   export default fetchCountries

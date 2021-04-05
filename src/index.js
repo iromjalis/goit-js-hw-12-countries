@@ -1,6 +1,7 @@
 import './styles.css';
 
 import { debounce } from "debounce";
+// const debounce = require('lodash.debounce');
 import fetchCountries from './js/fetchCountries.js'
 import updateMarkup from './js/updateMarkup.js'
 
@@ -22,10 +23,11 @@ const onInputChange = (e) => {
 
  refs.countryContainer.innerHTML = ''
 
- const inputValue = e.currentTarget.value;
+ const inputValue = e.target.value;
 
  if(inputValue){
-fetchCountries(inputValue.trim()).then(data=> updateMarkup(data))}
+fetchCountries(inputValue.trim()).then(data=> updateMarkup(data))
+.catch(error=>console.log('error'))}
 }
 
 refs.searchForm.addEventListener('input', debounce(onInputChange, 500))
